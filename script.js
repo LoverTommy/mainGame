@@ -54,6 +54,7 @@ logOutButton.addEventListener('click', ()=>{
     delete localStorage.user;
     userBar.style.display = 'none';
     loginOrSignIn.style.display = 'flex';
+    adminPanel.style.display = 'none';
 });
 
 var localLogInCheck = false;
@@ -144,6 +145,7 @@ function localLogIn() {
 
 }
 
+
 function apiLockGet() {
     setApiPassword = Math.random();
     apiRead();
@@ -151,15 +153,6 @@ function apiLockGet() {
     setTimeout(() => {
         if(nameInput.value in apiCallResult) {
             alert('Такой пользователь уже существует.');
-        }
-    
-        if(updateUserGamesInfo) {
-            $.ajax( {
-                url : apiUrl, type : 'POST', cache : false, dataType:'json',
-                data : { f: 'LOCKGET', n: apiName, p: setApiPassword },
-                success: updateUserGames, error: apiError
-            }
-        );
         }else if(nameInput.value.length < 5 || passwordInput.value.length < 5) {
             alert('Пароль и никнейм не должны быть меньше 5 символов.');
         }else {
@@ -171,21 +164,34 @@ function apiLockGet() {
         );
         }
     }, 1000);
+}
 
+function updateUserInfo() {
+    setApiPassword = Math.random();
+    apiRead();
 
+    setTimeout(() => {
+            $.ajax( {
+                url : apiUrl, type : 'POST', cache : false, dataType:'json',
+                data : { f: 'LOCKGET', n: apiName, p: setApiPassword },
+                success: updateUserGames, error: apiError
+            }
+        );
+
+    }, 1000);
 }
 
 function lockGetSuccess(callResult) {
-        apiCallResult = JSON.parse(callResult.result);
+    apiCallResult = JSON.parse(callResult.result);
 
-        apiCallResult[nameInput.value] = {'password': `${passwordInput.value}`, 'gamesnumber': 0, 'status': 'Player'};
+    apiCallResult[nameInput.value] = {'password': `${passwordInput.value}`, 'gamesnumber': 0, 'status': 'Player'};
             
-        $.ajax({
-                url : apiUrl, type : 'POST', cache : false, dataType:'json',
-                data : { f: 'UPDATE', n: apiName, v: JSON.stringify(apiCallResult), p: setApiPassword },
-                success: updateSuccess, error: apiError
-            }
-        );
+    $.ajax({
+            url : apiUrl, type : 'POST', cache : false, dataType:'json',
+            data : { f: 'UPDATE', n: apiName, v: JSON.stringify(apiCallResult), p: setApiPassword },
+            success: updateSuccess, error: apiError
+        }
+    );
 }
 
 
@@ -690,7 +696,7 @@ class Game {
         });
 
         updateUserGamesInfo = true;
-        apiLockGet();
+        updateUserInfo()
     }
     
     firstRound() {
@@ -815,11 +821,13 @@ class Game {
             this.secondRoundSound.autoplay = 'autoplay';
             this.secondRoundSound.loop = 'loop';
             this.secondRoundSound.play();
+            this.maxItems = 2;
         }else if(roundName == 'deadRound') {
             this.deadRoundSound.volume = '0.004';
             this.deadRoundSound.autoplay = 'autoplay';
             this.deadRoundSound.loop = 'loop';
             this.deadRoundSound.play();
+            this.maxItems = 4;
         }
 
         this.menu.style.display = 'none';
@@ -1113,12 +1121,14 @@ class Game {
         for(let i = 0; i < this.healPoints.dealer; i++) {
             const healpoint = document.createElement('img');
             healpoint.src = './images/healPoint.svg';
+            healpoint.id = 'healPointSVG';
             this.dealerHealPoints.appendChild(healpoint);
         }
     
         for(let i = 0; i < this.healPoints.player; i++) {
             const healpoint = document.createElement('img');
             healpoint.src = './images/healPoint.svg';
+            healpoint.id = 'healPointSVG';
             this.playerHealPoints.appendChild(healpoint);
         }
 

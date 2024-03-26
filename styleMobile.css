@@ -1,0 +1,97 @@
+@media screen and (max-width: 1200px) {
+    .menu #adminPanel {
+        gap: 20px;
+    }
+
+    /* .menu #adminPanel > div h2 {
+        font-size: 16px;
+    } */
+
+    .menu #adminPanel h2 {
+        font-size: 16px;
+    }
+
+    .menu #adminPanel span {
+        font-size: 12px;
+    }
+
+    .menu #userBar {
+        padding: 10px;
+    }
+
+    .menu #userBar h2{
+        font-size: 20px;
+    }
+
+    .menu #play {
+        font-size: 80px;
+    }
+
+    .menu #play::after {
+        font-size: 80px;
+    }
+
+    .gameRoom #titre {
+        width: 400px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .gameRoom #healPointsBar {
+        grid-template-columns: 100px 100px;
+        height: 50px;
+    }
+
+    .gameRoom #healPointsBar h4 {
+        font-size: 14px;
+    }
+
+    .gameRoom #healPointsBar #healPointSVG {
+        width: 15px;
+        height: 20px;
+    }
+
+    .gameRoom #choiceGun {
+        width: 250px;
+        height: 300px;
+        left: 36%;
+    }
+
+    .gameRoom #bulletsBar {
+        width: 400px;
+        height: 80px;
+        gap: 10px;
+    }
+
+    .gameRoom #bulletsBar img {
+        width: 20px;
+        height: 90%;
+    }
+
+    .gameRoom #setItemsBox {
+        width: 300px;
+        height: 300px;
+    }
+
+    .gameRoom #roundName {
+        width: 200px;
+        height: 80px;
+    }
+
+    .gameRoom #roundName > div {
+        width: 50px;
+        height: 50px;
+    }
+
+    .start #startWalk {
+        font-size: 80px;
+    }
+
+    .start #startWalk::after {
+        font-size: 80px;
+    }
+
+    #moveToMenu {
+        font-size: 50px;
+    }
+}
