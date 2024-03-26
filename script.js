@@ -87,7 +87,6 @@ function apiReadSuccess(callResult) {
 
     if(localLogInCheck) {
         if(localStorage.user in apiCallResult) {
-            console.log()
             localLogIn();
             localLogInCheck = false;
         }
@@ -240,15 +239,14 @@ function updateSuccess(callResult) {
     console.log('updateSuccess');
 }
 
-function apiError() {
-    console.log('error');
+function apiError(jqXHR,statusStr,errorStr) {
+    alert(statusStr+' '+errorStr);
 }
 
 
 function checkStayLogIn() {
     if(localStorage.user) {
         localLogInCheck = true;
-        console.log('localStorageTrue')
         apiRead();
     }
 }
@@ -859,7 +857,6 @@ class Game {
 
     getRandomItem() {
         this.randomItem = this.randomNumber(1,4);
-        console.log(this.randomItem);
 
         if(this.randomItem == 1) {
             this.itemGet += 1;
@@ -968,7 +965,6 @@ class Game {
     }
 
     getItemInfo(eo) {
-        console.log(eo.currentTarget)
         player.useItems(eo.currentTarget);
     }
 
