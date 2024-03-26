@@ -2,11 +2,7 @@
     .menu #adminPanel {
         gap: 20px;
     }
-
-    /* .menu #adminPanel > div h2 {
-        font-size: 16px;
-    } */
-
+    
     .menu #adminPanel h2 {
         font-size: 16px;
     }
@@ -71,6 +67,182 @@
     .gameRoom #setItemsBox {
         width: 300px;
         height: 300px;
+    }
+
+    .gameRoom #roundName {
+        width: 200px;
+        height: 80px;
+    }
+
+    .gameRoom #roundName > div {
+        width: 50px;
+        height: 50px;
+    }
+
+    .start #startWalk {
+        font-size: 80px;
+    }
+
+    .start #startWalk::after {
+        font-size: 80px;
+    }
+
+    #moveToMenu {
+        font-size: 50px;
+    }
+
+    .menu #loginOrSignIn {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .menu #loginOrSignIn span {
+        font-size: 10px;
+    }
+
+    .menu #loginWindow {
+        width: 200px;
+        height: 150px;
+        border-radius: 10px;
+        gap: 10px;
+        padding: 5px;
+    } 
+
+    .menu #loginWindow h2 {
+        font-size: 14px;
+    }
+
+    .menu .loginWindow form {
+        gap: 10px;        
+    }
+
+    .menu .loginWindow #userName, 
+    .menu .loginWindow #password {
+        width: 180px;
+        height: 15px;
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    .menu .loginWindow #userName:focus, 
+    .menu .loginWindow #password:focus {
+        outline: 0;
+        outline-offset: 0;
+    }
+
+    .menu .loginWindow .checkBox {
+        gap: 10px;
+    }
+
+    .menu .loginWindow .checkBox input {
+        width: 8px;
+        height: 8px;
+    }
+
+    .menu .loginWindow .checkBox label {
+        font-size: 10px;
+    }
+
+    .menu .loginWindow button {
+        padding: 5px 20px;
+        font-size: 10px;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .menu #adminPanel {
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .menu #adminPanel > div {
+        gap: 10px;
+    }
+
+    .menu #adminPanel h2 {
+        font-size: 8px;
+    }
+
+    .menu #adminPanel span {
+        font-size: 7px;
+    }
+
+    .menu #userBar {
+        padding: 5px;
+        gap: 5px;
+    }
+
+    .menu #userBar h2{
+        font-size: 8px;
+    }
+    
+    .menu #userBar span {
+        font-size: 8px;
+    }
+
+    .menu #userBar #logOut {
+        padding: 2px 5px;
+    }
+
+    .menu #play {
+        font-size: 30px;
+    }
+
+    .menu #play::after {
+        font-size: 30px;
+    }
+
+    .gameRoom #titre {
+        width: 150px;
+        height: 20px;
+        left: 34%;
+        padding: 10px;
+        font-size: 10px;
+        border-radius: 10px;
+    }
+
+    .gameRoom #healPointsBar {
+        grid-template-columns: 50px 50px;
+        height: 30px;
+        padding: 5px;
+    }
+
+    .gameRoom #healPointsBar h4 {
+        font-size: 8px;
+    }
+
+    .gameRoom #healPointsBar #healPointSVG {
+        width: 8px;
+        height: 10px;
+    }
+
+    .gameRoom #healPointsBar > div {
+        gap: 0;
+    }
+
+    .gameRoom #choiceGun {
+        width: 120px;
+        height: 150px;
+        left: 36%;
+        font-size: 20px;
+    }
+
+    .gameRoom #bulletsBar {
+        width: 150px;
+        height: 30px;
+        gap: 2px;
+    }
+
+    .gameRoom #bulletsBar img {
+        width: 8px;
+        height: 80%;
+    }
+
+    .gameRoom #setItemsBox {
+        width: 100px;
+        height: 100px;
     }
 
     .gameRoom #roundName {
