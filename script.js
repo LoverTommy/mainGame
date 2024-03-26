@@ -284,7 +284,7 @@ function startGame(eo) {
 const gameRoom = document.getElementById('gameRoom');
 const startButton = document.getElementById('startWalk')
 const doorOpenSound = document.getElementById('walkOpen');
-const warning = document.getElementById('warning')
+const warning = document.getElementById('warningQ')
 startButton.addEventListener('click', walkToGameRoom);
 
 function walkToGameRoom(eo) {
