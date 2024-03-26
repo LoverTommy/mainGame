@@ -122,8 +122,8 @@ function logIn() {
     if(userStatus.innerHTML == 'Admin') {
         adminPanel.style.display = 'flex';
     }
-
-    if(stayLogIn) {
+    
+    if(stayLogIn.checked) {
         localStorage.setItem('user', nameInput.value);
         
         console.log(localStorage.getItem('user'));
@@ -231,7 +231,7 @@ function updateSuccess(callResult) {
         adminPanel.style.display = 'flex';
     }
 
-    if(stayLogIn) {
+    if(stayLogIn.checked) {
         localStorage.setItem('user', nameInput.value);
         
         console.log(localStorage.getItem('user'));
