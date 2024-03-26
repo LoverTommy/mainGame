@@ -284,6 +284,7 @@ function startGame(eo) {
 const gameRoom = document.getElementById('gameRoom');
 const startButton = document.getElementById('startWalk')
 const doorOpenSound = document.getElementById('walkOpen');
+const warning = document.getElementById('warning')
 startButton.addEventListener('click', walkToGameRoom);
 
 function walkToGameRoom(eo) {
@@ -302,7 +303,16 @@ function walkToGameRoom(eo) {
             startSound.volume = '0.02';
         }
 
-        setTimeout(startGameWalk, 5000);
+        setTimeout(() => {
+            warning.style.cssText = 'animation-name: show; animation-duration: 1s; animation-fill-mode: forwards';
+            warning.style.display = 'flex';
+        }, 1000);
+
+        setTimeout(() => {
+            warning.style.display = 'none';
+        }, 6000);
+
+        setTimeout(startGameWalk, 7000);
         function startGameWalk() {
             startSound.volume = '0.004';
             gameRoom.style.cssText = 'animation-name: openStartGameRoom; animation-duration: 1.5s; animation-fill-mode: forwards'

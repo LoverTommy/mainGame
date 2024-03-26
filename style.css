@@ -8,6 +8,17 @@ body {
     background-color: black;
 }
 
+.warning {
+    display: none;
+    font-size: 40px;
+    position: absolute;
+    left: 35%;
+    top: 40%;
+    color: rgb(146, 91, 91);
+    font-family: 'konst';
+    text-align: center;
+}
+
 .menu {
     position: relative;
     width: 100vw;
