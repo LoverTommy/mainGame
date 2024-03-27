@@ -521,12 +521,8 @@ class Game {
         }
     }
 
-    randomSort() {
-        return Math.random() - 0.5;
-    }
-
     randomSortBullets() {
-        this.bullets.bulletsArr.sort(this.randomSort);
+        this.bullets.bulletsArr.sort(() => Math.random() - 0.5);
     }
 
     setNewRound() {
@@ -542,6 +538,7 @@ class Game {
 
             setTimeout(() => {
                 this.setBullets();
+                this.randomSortBullets();
             }, 5000);
 
             setTimeout(() => {
@@ -571,6 +568,7 @@ class Game {
 
             setTimeout(() => {
                 this.setBullets();
+                this.randomSortBullets();
             }, 5000);
 
             setTimeout(() => {
@@ -590,6 +588,7 @@ class Game {
 
             setTimeout(() => {
                 this.setBullets();
+                this.randomSortBullets();
             }, 5000);
 
             setTimeout(() => {
@@ -616,6 +615,7 @@ class Game {
 
             setTimeout(() => {
                 this.setBullets();
+                this.randomSortBullets();
             }, 5000);
 
             setTimeout(() => {
@@ -635,6 +635,7 @@ class Game {
 
             setTimeout(() => {
                 this.setBullets();
+                this.randomSortBullets();
             }, 6000);
 
             setTimeout(() => {
@@ -712,6 +713,7 @@ class Game {
         this.roundNumber = 1;
         this.bullets.true = 0;
         this.bullets.false = 0;
+        this.bullets.bulletsArr = [];
 
         this.bullets.true = 1;
         this.bullets.false = 2;
@@ -723,6 +725,7 @@ class Game {
         this.setRound(this.firstRoundItem, 'first', false, true)
         setTimeout(()=> {
             this.setBullets()
+            this.randomSortBullets();
         },3000);
         setTimeout(()=> {
             this.showTitre(`Колличество дефибриляторов: Диллер - ${this.healPoints.dealer}, Игрок - ${this.healPoints.player}.`,null,this.healPointsUpdate());
@@ -743,6 +746,7 @@ class Game {
     }
 
     secondRound() {
+        this.firstRoundSound.pause();
         this.secondRoundSound.play();
         this.roundActive = 'secondRound';
         this.roundNumber = 1;
@@ -1176,7 +1180,6 @@ class Game {
     roundStart() {
         this.showTitre('Я заряжаю патроны в случайном порядке...')
         this.randomSortBullets();
-        console.log(this.bullets.bulletsArr);
 
         this.bulletsPushed = 0;
         this.gameRoom.style.backgroundImage = "url('./images/pushBullets.png')";
@@ -1193,6 +1196,7 @@ class Game {
         },800);
 
         setTimeout(()=> {
+            console.log(this.bullets.bulletsArr);
             this.choiceMove();
         },6000);
     }
@@ -1439,11 +1443,22 @@ class Game {
         if(this.healPoints.player == 0) {
             setTimeout(() => {
                 this.endGame();
-            }, 2000);
+            }, 3000);
             return true;
         }
 
-        if(this.bullets.bulletsArr.length == 0 || this.healPoints.dealer <= 0) {
+        if(this.bullets.bulletsArr.length == 0) {
+            setTimeout(() => {
+                this.gameRoom.style.backgroundImage = "url('./images/defaultBG.jpeg')"
+                this.setNewRound();
+            }, 4000);
+            return true;
+        }
+
+        if(this.healPoints.dealer <= 0) {
+            setTimeout(() => {
+                this.healPointsUpdate();
+            }, 1000);
             setTimeout(() => {
                 this.gameRoom.style.backgroundImage = "url('./images/defaultBG.jpeg')"
                 this.setNewRound();
